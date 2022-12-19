@@ -1,8 +1,12 @@
-body {
-    padding-top: 50px;
+::-webkit-scrollbar {
+    width: 0;
+    background: transparent;
 }
 
-footer {
-    padding-left: 15px;
-    padding-right: 15px;
+/* * {
+    border: 1px solid red;
+} */
+
+.row {
+    min-height: 712px;
 }
