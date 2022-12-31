@@ -10,3 +10,23 @@
 .row {
     min-height: 712px;
 }
+
+#profile {
+    border: 3px solid black;
+    border-radius: 5px;
+}
+
+.container-text {
+    background-color: #F3F3F3;
+    border: 3px solid black;
+    border-radius: 5px;
+    height: 300px;
+}
+
+.borderBot {
+    border-bottom: 3px solid black;
+}
+
+.container-image {
+    height: 300px;
+}
