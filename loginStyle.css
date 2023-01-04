@@ -1,0 +1,50 @@
+ * {
+    margin: 0px;
+    padding: 0px;
+ }
+
+body {
+    background-color: #FFC692 !important;
+
+}
+
+.container-t {
+    background-color: white;
+    width: 85%;
+    height: 90vh;
+    border-radius: 10px;
+}
+
+.login-container {
+    width: 75%;
+    height: 70vh;
+    background-color: #FFC692;
+    margin-left: 150px;
+    border-radius: 10px;
+}
+
+.login {
+    width: 90%;
+    height: 90%;
+    background-color: white;
+    margin: auto;
+}
+
+form {
+    width: 90%;
+}
+
+.input {
+    width: 90%;
+    height: 50px;
+    margin: 1rem;
+    border: 1px solid #FFC692;
+}
+
+.submit {
+    background-color: #FFC692 !important;
+    margin: auto;
+    width: 150px;
+    height: 50px;
+    color: white!important;
+}
