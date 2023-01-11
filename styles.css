@@ -65,3 +65,7 @@
     background: #000;
     /* background: linear-gradient(90deg, rgba(248, 191, 137, 0) 0%, rgba(248, 191, 137, 0) 50%, rgba(248, 191, 137, 1) 100%); */
 }
+
+.form-item {
+    margin: .25rem;
+}
