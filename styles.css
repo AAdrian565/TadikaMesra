@@ -3,12 +3,26 @@
     background: transparent;
 }
 
-/* * {
-    border: 1px solid red;
-} */
-
 .row .nav-side {
-    min-height: 680px;
+    height: 100%;
+    width: 15%;
+    position: fixed;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    z-index: 1;
+}
+
+.nav-side-item {
+    color: black;
+    text-decoration: none;
+}
+
+.a.nav-side:hover {
+    color: #000000;
+}
+
+.main-content {
+    margin-left: 15%;
 }
 
 #profile {
@@ -23,10 +37,31 @@
     height: 300px;
 }
 
+.container-text-2 {
+    background-color: #F3F3F3;
+    border: 3px solid black;
+    border-radius: 5px;
+    height: 150px;
+}
+
 .borderBot {
     border-bottom: 3px solid black;
 }
 
+.body {
+    padding: 0;
+    margin: 0;
+}
+
 .container-image {
     height: 300px;
+}
+
+.list-image {
+    height: 150px;
+}
+
+.grad-transaksi {
+    background: #000;
+    /* background: linear-gradient(90deg, rgba(248, 191, 137, 0) 0%, rgba(248, 191, 137, 0) 50%, rgba(248, 191, 137, 1) 100%); */
 }
