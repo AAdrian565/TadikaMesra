@@ -3,6 +3,10 @@
     background: transparent;
 }
 
+.no-overflow {
+    overflow: hidden;
+}
+
 .row .nav-side {
     height: 100%;
     width: 15%;
