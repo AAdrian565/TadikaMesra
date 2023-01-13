@@ -39,21 +39,23 @@
                 </a>
             </nav>
             <!-- CONTENT START -->
-
-            <?php
-                function OpenCon(){
-                    $dbhost = "localhost";
-                    $dbuser = "root";
-                    $dbpass = "";
-                    $db = "paud";
+            <?php function OpenCon(){
+                    $dbhost = "localhost"; $dbuser = "root"; $dbpass = "";
+                    $db = "re";
                     $conn = new mysqli($dbhost, $dbuser, $dbpass,$db) or die("Connect failed: %s\n". $conn -> error);
-                    return $conn;
-                 }
-                 $conn = OpenCon();
-                 $sql = "SELECT * FROM SISWA";
+                    return $conn;}$conn = OpenCon();?>
+            <?php
+                 $sql = 
+                "
+                    SELECT Siswa.Nama_Siswa, Siswa.ID_Siswa, Kelas.Nama_Kelas, Guru.Nama_Guru AS Wali_Kelas
+                    FROM Siswa
+                    JOIN Kelas ON Siswa.ID_Kelas = Kelas.ID_Kelas
+                    JOIN Guru ON Kelas.ID_Guru = Guru.ID_Guru;
+                ";
                  $result = mysqli_query($conn, $sql);
                  $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
             ?>
+            <div class="col-10 main-content">
             <?php 
             while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){
             // ?>
@@ -65,8 +67,8 @@
                         <h1 class="m-0"><?= $row['Nama_Siswa'] ?></h1>
                         <hr class="m-0">
                         <p class="m-0 mt-2">ID : <?= $row['ID_Siswa'] ?></p>
-                        <p class="m-0">Kelas : <?= $row['Jenis_Kelamin'] ?></p>
-                        <p class="m-0">Wali Kelas : <?= $row['Alamat'] ?></p>
+                        <p class="m-0">Kelas : <?= $row['Nama_Kelas'] ?></p>
+                        <p class="m-0">Wali Kelas : <?= $row['Wali_Kelas'] ?></p>
                     </div>
             </div>
             <?php } ?>
@@ -77,12 +79,7 @@
 
 
 
-    <?php
-    function CloseCon($conn)
-     {
-     $conn -> close();
-     }
-    ?>
+    <?php function CloseCon($conn){$conn -> close();}?>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-OERcA2EqjJCMA?3yGxIOqMEjwtxJY7qPCqsdltbNJuaOe923Mo//f6V8Qbsw3"
         crossorigin="anonymous"></script>

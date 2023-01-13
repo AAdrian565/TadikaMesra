@@ -79,6 +79,6 @@
     max-height: 1000px;
 }
 
-.image-transaction-container > img {
-  flex: 1 1;
+.image-transaction-container>img {
+    flex: 1 1;
 }
