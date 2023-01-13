@@ -1,4 +1,11 @@
 <!DOCTYPE html>
+<?php
+session_start();
+
+if (!isset($_SESSION['username_siswa'])) {
+    header("Location: login.php");
+}
+?>
 <html lang="en">
 
 <head>
@@ -37,7 +44,7 @@
                         Transaction
                     </a>
                 </div>
-                <a href="./login.php" class=" nav-side-item mt-2 ms-3 mb-5 pb-5" style="display: block;">
+                <a href="logout.php" class=" nav-side-item mt-2 ms-3 mb-5 pb-5" style="display: block;">
                     <img src="images/logout.png" alt="" width="30px" height="30px">
                     Logout
                 </a>

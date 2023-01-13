@@ -22,15 +22,13 @@
                         <img src="https://www.kemdikbud.go.id/main/addons/shared_addons/themes/november_theme/img/kemdikbud_64x64.png"
                             alt="" width="100px" class="m-3">
                         <h1 class="align-self-center m-3 fs-3">LOGIN</h1>
-                        <form action="" class="align-self-center m-3">
+                        <form action="validation_logic.php" class="align-self-center m-3 d-flex flex-column" method="POST">
                             <label for="name"></label>
-                            <input type="text" placeholder="  Username" class="input">
+                            <input type="text" placeholder="  Username" class="input" name="username">
                             <br>
                             <label for="password"></label>
-                            <input type="password" placeholder="  Password" class="input">
-                            <div class="d-flex justify-content-center mb-5">
-                                <a href="./dasbor.php" class="m-auto btn btn-default submit fs-4">Submit</a>
-                            </div>
+                            <input type="password" placeholder="  Password" class="input" name="password">
+                            <button class="btn btn-primary p-2 m-auto w-25" type="submit" name="submit">Submit</button>
                             <div class="d-flex justify-content-center mt-5 pt-5">
                                 <a href="./daftarmurid.php" class="btn btn-default fs-5">​</a>
                             </div>
