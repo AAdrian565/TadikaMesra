@@ -73,3 +73,12 @@
 .form-item {
     margin: .25rem;
 }
+
+.image-transaction-container {
+    max-width: 600px;
+    max-height: 1000px;
+}
+
+.image-transaction-container > img {
+  flex: 1 1;
+}
