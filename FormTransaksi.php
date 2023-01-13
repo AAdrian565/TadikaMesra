@@ -6,14 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link href="/css/main.min.css" rel="stylesheet" crossorigin="anonymous">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/main.min.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="styles.css?v=<?php echo time(); ?>">
 </head>
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-light border-bottom-3 bg-primary sticky-md-top">
         <div class="container-fluid">
-            <a class="navbar-brand ms-5" href="./dasbor.html">
+            <a class="navbar-brand ms-5" href="./dasbor.php">
                 <img src="https://www.kemdikbud.go.id/main/addons/shared_addons/themes/november_theme/img/kemdikbud_64x64.png"
                     alt="" width="60" height="60" class="d-inline-block ">
                 TK Tadika Mesra | Monitoring System
@@ -24,16 +24,16 @@
         <div class="row">
             <nav class="col-2 bg-secondary flex-column nav-side d-flex justify-content-between">
                 <div class="d-flex flex-column">
-                    <a href="./daftarmurid.html" class="dasbor nav-side-item  mt-5 ms-3" style="display: block;">
+                    <a href="./daftarmurid.php" class="dasbor nav-side-item  mt-5 ms-3" style="display: block;">
                         <img src="images/list.png" alt="" width="30px" , height="30px">
                         List Siswa
                     </a>
-                    <a href="./FormTransaksi.html" class="mapel nav-side-item  mt-2 ms-3" style="display: block;">
+                    <a href="./FormTransaksi.php" class="mapel nav-side-item  mt-2 ms-3" style="display: block;">
                         <img src="images/newTransaction.png" alt="" width="30px" height="30px">
                         Add Transaction
                     </a>
                 </div>
-                <a href="./login.html" class=" nav-side-item mt-2 ms-3 mb-5 pb-5" style="display: block;">
+                <a href="./login.php" class=" nav-side-item mt-2 ms-3 mb-5 pb-5" style="display: block;">
                     <img src="images/logout.png" alt="" width="30px" height="30px">
                     Logout
                 </a>

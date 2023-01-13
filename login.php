@@ -5,10 +5,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    <link rel="stylesheet" href="loginStyle.css">
-    <link href="/css/main.min.css" rel="stylesheet" crossorigin="anonymous">
-
+    <title>Document</title>
+    <link rel="stylesheet" href="css/main.min.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="loginStyle.css?v=<?php echo time(); ?>">
 </head>
 
 <body>
@@ -30,10 +29,10 @@
                             <label for="password"></label>
                             <input type="password" placeholder="  Password" class="input">
                             <div class="d-flex justify-content-center mb-5">
-                                <a href="./dasbor.html" class="m-auto btn btn-default submit fs-4">Submit</a>
+                                <a href="./dasbor.php" class="m-auto btn btn-default submit fs-4">Submit</a>
                             </div>
                             <div class="d-flex justify-content-center mt-5 pt-5">
-                                <a href="./daftarmurid.html" class="btn btn-default fs-5">​</a>
+                                <a href="./daftarmurid.php" class="btn btn-default fs-5">​</a>
                             </div>
 
                         </form>
