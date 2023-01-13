@@ -43,57 +43,73 @@
                 </a>
             </nav>
             <!-- CONTENT START -->
+            <?php 
+                function OpenCon(){
+                    $dbhost = "localhost"; 
+                    $dbuser = "root"; 
+                    $dbpass = "";
+                    $db = "re";
+                    $conn = new mysqli($dbhost, $dbuser, $dbpass,$db) or die("Connect failed: %s\n". $conn -> error);
+                    return $conn;
+                }
+                $conn = OpenCon();
+                $sql = 
+                "
+                    SELECT Kelas.Nama_Kelas, Guru.Nama_Guru FROM Kelas, Guru, Siswa 
+                    WHERE Siswa.ID_Siswa = 'S001'
+                    AND Kelas.ID_Kelas = Siswa.ID_Kelas
+                    AND Kelas.ID_Guru = Guru.ID_Guru;
+                ";
+                $result = mysqli_query($conn, $sql);
+                $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+                ?>
             <div class="col-10 main-content">
                 <div class="mt-5 mx-3">
                     <div class="h2">Mapel Siswa</div>
                     <hr class="border border-dark border-3 bg-dark">
                     <div class="d-flex flex-row justify-content-between mx-3">
-                        <div class="h3">Kelas</div>
-                        <div class="h3 ml-auto">Wali Kelas: Bu Astuti</div>
+                        <div class="h3">Kelas <?= $row['Nama_Kelas']?></div>
+                        <div class="h3 ml-auto">Wali Kelas: <?= $row['Nama_Guru']?></div>
                     </div>
                     <hr>
                     <div class="cont my-4">
+                        
+                        <?php
+                        function isEven($number){
+                            return($number % 2 == 0);
+                        }
+                        $sql = 
+                        "
+                        SELECT Mapel.Nama_Mapel, Guru.Nama_Guru
+                        FROM Siswa
+                        JOIN Kelas ON Siswa.ID_Kelas = Kelas.ID_Kelas
+                        JOIN KelasMapel ON Kelas.ID_Kelas = KelasMapel.ID_Kelas
+                        JOIN Mapel ON KelasMapel.ID_Mapel = Mapel.ID_Mapel
+                        JOIN Guru ON KelasMapel.ID_Guru = Guru.ID_Guru
+                        WHERE Siswa.ID_Siswa = 'S001'
+                        ";
+                        $result = mysqli_query($conn, $sql);
+                        $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+                        $i = 0;
+                        do{
+                            ?>
+                        
+                        <?php if(isEven($i)){?>
                         <div class="row my-3">
+                            <?php }?>
                             <div class="col mx-3 py-3 border border-2 rounded bg-light">
-                                <h2 class="mt-1">Membaca</h2>
+                                <h2 class="mt-1"><?= $row['Nama_Mapel'] ?></h2>
                                 <hr>
-                                Pelajaran dimana para siswa diajarkan untuk membaca
+                                Pengajar: <?= $row['Nama_Guru'] ?>
                                 <div class="progress mt-3" role="progressbar" aria-label="Basic example"
-                                    aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
-                                    <div class="progress-bar w-75"></div>
-                                </div>
-                            </div>
-                            <div class="col mx-3 py-3 border border-2 rounded bg-light">
-                                <h2 class="mt-1">Membaca</h2>
-                                <hr>
-                                Pelajaran dimana para siswa diajarkan untuk membaca
-                                <div class="progress mt-3" role="progressbar" aria-label="Basic example"
-                                    aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
-                                    <div class="progress-bar w-75"></div>
-                                </div>
+                                aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
+                                <div class="progress-bar w-75"></div>
                             </div>
                         </div>
-                        <div class="row my-4">
-                            <div class="col mx-3 py-3 border border-2 rounded bg-light">
-                                <h2 class="mt-1">Membaca</h2>
-                                <hr>
-                                Pelajaran dimana para siswa diajarkan untuk membaca
-                                <div class="progress mt-3" role="progressbar" aria-label="Basic example"
-                                    aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
-                                    <div class="progress-bar w-75"></div>
-                                </div>
-                            </div>
-                            <div class="col mx-3 py-3 border border-2 rounded bg-light">
-                                <h2 class="mt-1">Membaca</h2>
-                                <hr>
-                                Pelajaran dimana para siswa diajarkan untuk membaca
-                                <div class="progress mt-3" role="progressbar" aria-label="Basic example"
-                                    aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
-                                    <div class="progress-bar w-75"></div>
-                                </div>
-                            </div>
-                        </div>
-
+                        <?php if(!isEven($i)){?>
+                    </div>
+                        <?php }$i++;}while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) ?>
+                    </div>
                     </div>
                 </div>
             </div>
@@ -101,7 +117,7 @@
     </div>
 
 
-
+    <?php function CloseCon($conn){$conn -> close();}?>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-OERcA2EqjJCMA?3yGxIOqMEjwtxJY7qPCqsdltbNJuaOe923Mo//f6V8Qbsw3"
         crossorigin="anonymous"></script>

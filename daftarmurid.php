@@ -43,23 +43,21 @@
                     $dbhost = "localhost"; $dbuser = "root"; $dbpass = "";
                     $db = "re";
                     $conn = new mysqli($dbhost, $dbuser, $dbpass,$db) or die("Connect failed: %s\n". $conn -> error);
-                    return $conn;}$conn = OpenCon();?>
-            <?php
-                 $sql = 
+                    return $conn;
+                }
+                $conn = OpenCon();
+                $sql = 
                 "
                     SELECT Siswa.Nama_Siswa, Siswa.ID_Siswa, Kelas.Nama_Kelas, Guru.Nama_Guru AS Wali_Kelas
                     FROM Siswa
                     JOIN Kelas ON Siswa.ID_Kelas = Kelas.ID_Kelas
                     JOIN Guru ON Kelas.ID_Guru = Guru.ID_Guru;
                 ";
-                 $result = mysqli_query($conn, $sql);
-                 $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
-            ?>
-            <div class="col-10 main-content">
-            <?php 
-            while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){
-            // ?>
-                <div class="row">
+                $result = mysqli_query($conn, $sql);
+                $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+                do{
+                ?>
+                    <div class="row">
                     <div class="col-2">
                         <img src="images/neko.png" alt="" width="150px" height="150px" id="profile" class="mt-3 ms-3">
                     </div> 
@@ -71,7 +69,7 @@
                         <p class="m-0">Wali Kelas : <?= $row['Wali_Kelas'] ?></p>
                     </div>
             </div>
-            <?php } ?>
+            <?php }while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) ?>
             <br>
             </div>
         </div>
