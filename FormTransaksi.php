@@ -13,7 +13,7 @@ if (!isset($_SESSION['username_guru'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="css/main.min.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="css\main.min.css?v="<?php echo time(); ?>">
     <link rel="stylesheet" href="styles.css?v=<?php echo time(); ?>">
 </head>
 
@@ -35,12 +35,16 @@ if (!isset($_SESSION['username_guru'])) {
                         <img src="images/list.png" alt="" width="30px" , height="30px">
                         List Siswa
                     </a>
+                    <a href="./Transaksig.php" class="transaksi nav-side-item  mt-2 ms-3" style="display: block;">
+                        <img src="images/transaction.png" alt="" width="30px" height="30px">
+                        Transaction
+                    </a>
                     <a href="./FormTransaksi.php" class="mapel nav-side-item  mt-2 ms-3" style="display: block;">
-                        <img src="images/newTransaction.png" alt="" width="30px" height="30px">
+                        <img src="images/newTransaction.png" alt="" width="30px" maxheight="30px">
                         Add Transaction
                     </a>
                 </div>
-                <a href="logout.php" class=" nav-side-item mt-2 ms-3 mb-5 pb-5" style="display: block;">
+                <a href="./logout.php" class=" nav-side-item mt-2 ms-3 mb-5 pb-5" style="display: block;">
                     <img src="images/logout.png" alt="" width="30px" height="30px">
                     Logout
                 </a>

@@ -50,50 +50,55 @@ if (!isset($_SESSION['username_guru'])) {
                 </a>
             </nav>
             <!-- CONTENT START -->
-            <?php function OpenCon(){
-                    $dbhost = "localhost"; $dbuser = "root"; $dbpass = "";
+            <div class="col-10 main-content">
+            <?php 
+                function OpenCon(){
+                    $dbhost = "localhost"; 
+                    $dbuser = "root"; 
+                    $dbpass = "";
                     $db_name = "database_tk";
                     $conn = new mysqli($dbhost, $dbuser, $dbpass,$db_name) or die("Connect failed: %s\n". $conn -> error);
                     return $conn;
                 }
-                $conn = OpenCon();
                 $ID = $_SESSION['ID_Guru'];
+                $conn = OpenCon();
                 $sql = 
                 "
-                    SELECT Siswa.Nama_Siswa, Siswa.ID_Siswa, Kelas.Nama_Kelas, Guru.Nama_Guru
-                    FROM Siswa
-                    JOIN Kelas ON Siswa.ID_Kelas = Kelas.ID_Kelas
+                    SELECT Transaksi.Date, Makanan.Nama_Makanan, Transaksi.Deskripsi_Transaksi, Guru.Nama_Guru, Transaksi.Catatan_Guru, Foto.image
+                    FROM Transaksi
+                    JOIN Kelas ON Transaksi.ID_Kelas = Kelas.ID_Kelas
                     JOIN Guru ON Kelas.ID_Guru = Guru.ID_Guru
-                    WHERE Guru.ID_Guru = '$ID'
+                    JOIN Makanan ON Transaksi.ID_Makanan = Makanan.ID_Makanan
+                    JOIN Foto ON Transaksi.ID_Foto = Foto.ID_Foto
+                    WHERE Guru.ID_Guru = '$ID';
                 ";
                 $result = mysqli_query($conn, $sql);
                 $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                 do{
                 ?>
-                    <div class="row">
-                    <div class="col-2">
-                        <img src="images/neko.png" alt="" width="150px" height="150px" id="profile" class="mt-3 ms-3">
-                    </div> 
-                    <div class="col container-text-2 mt-3 me-4 d-flex flex-column">
-                        <h1 class="m-0"><?= $row['Nama_Siswa'] ?></h1>
-                        <hr class="m-0">
-                        <p class="m-0 mt-2">ID : <?= $row['ID_Siswa'] ?></p>
-                        <p class="m-0">Kelas : <?= $row['Nama_Kelas'] ?></p>
-                        <p class="m-0">Wali Kelas : <?= $row['Nama_Guru'] ?></p>
+
+
+                <div class="row mx-3 my-3">
+                    <div class="mx-3 my-3 bg-primary col rounded-5 image-transaction-container d-flex flex-wrap p-0">
+                        <img src="<?= $row['image']?>" alt="" class="" height="282px">
                     </div>
+
+                    <div class="mx-3 my-3 bg-primary col rounded-5  p-2">
+                        <div class="h2"><?= $row['Date'] ?></div>
+                        <div class="fs-5"> Makan Siang: <?= $row['Nama_Makanan'] ?></div>
+                        <div class="fs-5"> <?= $row['Deskripsi_Transaksi'] ?></div>
+                        <div class="fs-5">Catatan dari <?= $row['Nama_Guru'] ?>:</div>
+                        <p><?= $row['Catatan_Guru'] ?></p>
+                        <div class="h3 rounded-5 text-end pe-4">Detail→</div>
+                    </div>
+                </div>
+                <?php }while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) ?>
+
+
             </div>
-            <?php }while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) ?>
-            <br>
-            </div>
-        </div>
-    </div>
-
-
-
-    <?php function CloseCon($conn){$conn -> close();}?>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-OERcA2EqjJCMA?3yGxIOqMEjwtxJY7qPCqsdltbNJuaOe923Mo//f6V8Qbsw3"
-        crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-OERcA2EqjJCMA?3yGxIOqMEjwtxJY7qPCqsdltbNJuaOe923Mo//f6V8Qbsw3"
+            crossorigin="anonymous"></script>
 </body>
 
 </html>

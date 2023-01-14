@@ -4,6 +4,15 @@ FROM Siswa
 JOIN Kelas ON Siswa.ID_Kelas = Kelas.ID_Kelas
 JOIN Guru ON Kelas.ID_Guru = Guru.ID_Guru;
 
+-- List Nama, ID, Kelas, dan Guru, given ID_Guru
+SELECT Transaksi.Date, Makanan.Nama_Makanan, Transaksi.Deskripsi_Transaksi, Guru.Nama_Guru, Transaksi.Catatan_Guru, Foto.image
+FROM Transaksi
+JOIN Kelas ON Transaksi.ID_Kelas = Kelas.ID_Kelas
+JOIN Guru ON Kelas.ID_Guru = Guru.ID_Guru
+JOIN Makanan ON Transaksi.ID_Makanan = Makanan.ID_Makanan
+JOIN Foto ON Transaksi.ID_Foto = Foto.ID_Foto
+WHERE Guru.ID_Guru = '$ID';
+
 -- GET NamaKelas, WaliKelas Dengan mengetahui ID_Siswa
 SELECT Kelas.Nama_Kelas, Guru.Nama_Guru FROM Kelas, Guru, Siswa 
 WHERE Siswa.ID_Siswa = 'S001'

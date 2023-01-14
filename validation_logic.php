@@ -28,6 +28,7 @@ if (isset($_POST['submit'])) {
     if ($result->num_rows > 0) {
       $row = mysqli_fetch_assoc($result);
       $_SESSION['username_guru'] = $row['Nama_Guru'];
+      $_SESSION['ID_Guru'] = $row['ID_Guru'];
       define('GURU_CONSTANT', '234');
       header("Location: daftarmurid.php");
     } else {
