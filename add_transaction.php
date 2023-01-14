@@ -137,8 +137,9 @@ $result_kelas = $connection->query($id_query);
 $row_kelas = $result_kelas->fetch_assoc();
 $kelas = $row_kelas['ID_Kelas'];
 print_r($row_kelas);
-$query_transaksi = "INSERT INTO Transaksi (ID_Transaksi, ID_Kelas, ID_Foto, ID_Makanan, Deskripsi_Transaksi, Catatan_Guru) 
-                    VALUE ('$id_trans', '$kelas', '$id_foto', '$id_makanan', '$deskripsi_transaksi', '$catatan_guru')";
+$date = date("Y-m-d");
+$query_transaksi = "INSERT INTO Transaksi (ID_Transaksi, Date, ID_Kelas, ID_Foto, ID_Makanan, Deskripsi_Transaksi, Catatan_Guru) 
+                    VALUE ('$id_trans', '$date', '$kelas', '$id_foto', '$id_makanan', '$deskripsi_transaksi', '$catatan_guru')";
   echo "wow";
 echo $id_trans;
 

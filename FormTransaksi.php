@@ -65,15 +65,7 @@ if (!isset($_SESSION['username_guru'])) {
                             ?>
                         </select>
                     </div>
-                    <div class="input-group mb-3">
-                        <div class="input-group-text">Mapel</div>
-                        <select class="form-select" id="inputmapel" name="input_mapel" aria-label="inputmapel">
-                            <option selected>Mapel 1</option>
-                            <option value="1">Mapel 2</option>
-                            <option value="2">Mapel 3</option>
-                            <option value="3">Mapel 4</option>
-                        </select>
-                    </div>
+
                     <div class="input-group mb-3">
                         <input type="file" class="form-control" id="inputgambar" name="input_gambar"
                             aria-describedby="inputGroupFileAddon03" aria-label="Upload">
