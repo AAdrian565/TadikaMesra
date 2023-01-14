@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <?php
-// session_start();
+session_start();
 
-// if (!isset($_SESSION['username_siswa'])) {
-//     header("Location: login.php");
-// }
+if (!isset($_SESSION['username_siswa'])) {
+    header("Location: login.php");
+}
 ?>
 <html lang="en">
 
@@ -60,16 +60,18 @@
                     $conn = new mysqli($dbhost, $dbuser, $dbpass,$db_name) or die("Connect failed: %s\n". $conn -> error);
                     return $conn;
                 }
+                $ID = $_SESSION['ID_Siswa'];
                 $conn = OpenCon();
                 $sql = 
                 "
-                    SELECT Transaksi.Date, Makanan.Nama_Makanan, Transaksi.Deskripsi_Transaksi, Guru.Nama_Guru, Transaksi.Catatan_Guru
+                    SELECT Transaksi.Date, Makanan.Nama_Makanan, Transaksi.Deskripsi_Transaksi, Guru.Nama_Guru, Transaksi.Catatan_Guru, Foto.image
                     FROM Transaksi
                     JOIN Kelas ON Transaksi.ID_Kelas = Kelas.ID_Kelas
                     JOIN Siswa ON Kelas.ID_Kelas = Siswa.ID_Kelas
                     JOIN Makanan ON Transaksi.ID_Makanan = Makanan.ID_Makanan
                     JOIN Guru ON Kelas.ID_Guru = Guru.ID_Guru
-                    WHERE Siswa.ID_Siswa = 'S001'
+                    JOIN Foto ON Transaksi.ID_Foto = Foto.ID_Foto
+                    WHERE Siswa.ID_Siswa = '$ID'
                 ";
                 $result = mysqli_query($conn, $sql);
                 $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
@@ -79,10 +81,7 @@
 
                 <div class="row mx-3 my-3">
                     <div class="mx-3 my-3 bg-primary col rounded-5 image-transaction-container d-flex flex-wrap p-0">
-                        <img src="https://picsum.photos/1000/1000" alt="" class="" height="282px">
-                        <img src="https://picsum.photos/1000/1000" alt="" class="" height="282px">
-                        <img src="https://picsum.photos/1000/1000" alt="" class="" height="282px">
-                        <img src="https://picsum.photos/1000/1000" alt="" class="" height="282px">
+                        <img src="<?= $row['image']?>" alt="" class="" height="282px">
                     </div>
 
                     <div class="mx-3 my-3 bg-primary col rounded-5  p-2">

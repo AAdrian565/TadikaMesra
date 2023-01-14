@@ -56,13 +56,16 @@ if (!isset($_SESSION['username_siswa'])) {
                     $conn = new mysqli($dbhost, $dbuser, $dbpass,$db_name) or die("Connect failed: %s\n". $conn -> error);
                     return $conn;}$conn = OpenCon();?>
 
-            <?php $sql = 
+            <?php 
+            $ID = $_SESSION['ID_Siswa'];
+            $sql = 
+
                 "
                     SELECT Siswa.ID_Siswa, Siswa.Nama_Siswa, Kelas.Nama_Kelas, Guru.Nama_Guru
                     FROM Siswa
                     JOIN Kelas ON Siswa.ID_Kelas = Kelas.ID_Kelas
                     JOIN Guru ON Kelas.ID_Guru = Guru.ID_Guru
-                    WHERE Siswa.ID_Siswa = 'S001'
+                    WHERE Siswa.ID_Siswa = '$ID'
                 ";
                  $result = mysqli_query($conn, $sql);
                  $data = mysqli_fetch_array($result);
