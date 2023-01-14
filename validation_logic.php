@@ -19,6 +19,7 @@ if (isset($_POST['submit'])) {
   if ($result->num_rows > 0) {
     $row = mysqli_fetch_assoc($result);
     $_SESSION['username_siswa'] = $row['Nama_Siswa'];
+    $_SESSION['ID_Siswa'] = $row['ID_Siswa'];
     define('USER_CONSTANT', '123');
     header("Location: dasbor.php");
   } else {

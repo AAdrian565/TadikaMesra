@@ -55,8 +55,8 @@ if (!isset($_SESSION['username_siswa'])) {
                     $dbhost = "localhost"; 
                     $dbuser = "root"; 
                     $dbpass = "";
-                    $db = "re";
-                    $conn = new mysqli($dbhost, $dbuser, $dbpass,$db) or die("Connect failed: %s\n". $conn -> error);
+                    $db_name = "database_tk";
+                    $conn = new mysqli($dbhost, $dbuser, $dbpass,$db_name) or die("Connect failed: %s\n". $conn -> error);
                     return $conn;
                 }
                 $conn = OpenCon();
@@ -85,6 +85,7 @@ if (!isset($_SESSION['username_siswa'])) {
                         function isEven($number){
                             return($number % 2 == 0);
                         }
+                        $ID = $_SESSION['ID_Siswa'];
                         $sql = 
                         "
                         SELECT Mapel.Nama_Mapel, Guru.Nama_Guru
@@ -93,7 +94,7 @@ if (!isset($_SESSION['username_siswa'])) {
                         JOIN KelasMapel ON Kelas.ID_Kelas = KelasMapel.ID_Kelas
                         JOIN Mapel ON KelasMapel.ID_Mapel = Mapel.ID_Mapel
                         JOIN Guru ON KelasMapel.ID_Guru = Guru.ID_Guru
-                        WHERE Siswa.ID_Siswa = 'S001'
+                        WHERE Siswa.ID_Siswa = '$ID'
                         ";
                         $result = mysqli_query($conn, $sql);
                         $row = mysqli_fetch_array($result, MYSQLI_ASSOC);

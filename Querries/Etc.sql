@@ -26,3 +26,8 @@ JOIN KelasMapel ON Kelas.ID_Kelas = KelasMapel.ID_Kelas
 JOIN Mapel ON KelasMapel.ID_Mapel = Mapel.ID_Mapel
 JOIN Guru ON KelasMapel.ID_Guru = Guru.ID_Guru
 WHERE Kelas.ID_Kelas = 'your_kelas_id'
+
+SELECT T.* 
+FROM Transaksi T 
+JOIN Siswa S ON T.ID_Kelas = S.ID_Kelas
+WHERE S.ID_Siswa = 'S001';

@@ -48,8 +48,8 @@ if (!isset($_SESSION['username_guru'])) {
             <!-- CONTENT START -->
             <?php function OpenCon(){
                     $dbhost = "localhost"; $dbuser = "root"; $dbpass = "";
-                    $db = "databse_tk";
-                    $conn = new mysqli($dbhost, $dbuser, $dbpass,$db) or die("Connect failed: %s\n". $conn -> error);
+                    $db_name = "database_tk";
+                    $conn = new mysqli($dbhost, $dbuser, $dbpass,$db_name) or die("Connect failed: %s\n". $conn -> error);
                     return $conn;
                 }
                 $conn = OpenCon();
