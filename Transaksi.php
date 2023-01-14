@@ -90,7 +90,7 @@ if (!isset($_SESSION['username_siswa'])) {
                         <div class="fs-5"> <?= $row['Deskripsi_Transaksi'] ?></div>
                         <div class="fs-5">Catatan dari <?= $row['Nama_Guru'] ?>:</div>
                         <p><?= $row['Catatan_Guru'] ?></p>
-                        <div class="h3 rounded-5 text-end pe-4">Detail→</div>
+                        <!-- <div class="h3 rounded-5 text-end pe-4">Detail→</div> -->
                     </div>
                 </div>
                 <?php }while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) ?>

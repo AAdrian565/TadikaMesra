@@ -24,10 +24,10 @@
                         <h1 class="align-self-center m-3 fs-3">LOGIN</h1>
                         <form action="validation_logic.php" class="align-self-center m-3 d-flex flex-column" method="POST">
                             <label for="name"></label>
-                            <input type="text" placeholder="  Username" class="input" name="username">
+                            <input type="text" placeholder="Username" class="input p-2" name="username">
                             <br>
                             <label for="password"></label>
-                            <input type="password" placeholder="  Password" class="input" name="password">
+                            <input type="password" placeholder="Password" class="input p-2" name="password">
                             <button class="btn btn-primary p-2 m-auto w-25" type="submit" name="submit">Submit</button>
                             <div class="d-flex justify-content-center mt-5 pt-5">
                                 <a href="./daftarmurid.php" class="btn btn-default fs-5">​</a>
