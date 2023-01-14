@@ -24,11 +24,16 @@ if (isset($_POST['submit'])) {
     header("Location: dasbor.php");
   } else {
     $query = "SELECT * FROM Guru WHERE Nama_Guru='$username' AND ID_Guru='$password'";
+    $query2 = "SELECT * FROM Kelas WHERE ID_Guru='$password'";
     $result = mysqli_query($connection, $query);
+    $result2 = mysqli_query($connection, $query2);
     if ($result->num_rows > 0) {
       $row = mysqli_fetch_assoc($result);
+      $row2 = mysqli_fetch_assoc($result2);
       $_SESSION['username_guru'] = $row['Nama_Guru'];
       $_SESSION['ID_Guru'] = $row['ID_Guru'];
+      $_SESSION['Nama_Kelas'] = $row2['Nama_Kelas'];
+
       define('GURU_CONSTANT', '234');
       header("Location: daftarmurid.php");
     } else {

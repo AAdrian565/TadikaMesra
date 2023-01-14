@@ -1,8 +1,17 @@
 <?php 
+session_start();
+
+if (!isset($_SESSION['username_guru'])) {
+    header("Location: login.php");
+}
   // Include connection to database
   echo "wow";
 include('connection.php');
 
+$targetDir = "img/";
+$fileName = basename($_FILES["file"]["name"]);
+$targetFilePath = $targetDir . $fileName;
+$fileType = pathinfo($targetFilePath,PATHINFO_EXTENSION);
   echo "wow";
 // get data from form
 $input_kelas = $_POST['input_kelas'];
@@ -48,7 +57,7 @@ if ($result_foto->num_rows == 0) {
   array_push($foto, $foto_id[0], $foto_id[1], $foto_id[2]);
   $foto_push = implode("", $foto);
   $id_foto = $foto_push;
-  $query_foto = "INSERT INTO Foto (ID_Foto, Nama_Foto, image) VALUE ('$foto_push', 'Foto1', '$input_gambar')";
+  $query_foto = "INSERT INTO Foto (ID_Foto, Nama_Foto, image) VALUE ('$foto_push', 'Foto1', '$fileName')";
   if ($connection->query($query_foto)) {
     //header("location: FormTransaksi.php");
   } else {
@@ -132,7 +141,14 @@ if ($result_query->num_rows == 0) {
   $id_trans = $query_push;
   echo "wow";
 }
-$id_query = "SELECT ID_Kelas FROM Kelas WHERE Nama_Kelas = '$input_kelas'";
+
+$id_temp = $_SESSION['Nama_Kelas'];
+//$id_temp_temp = $id_temp->fetch_assoc();
+echo $id_temp;
+$id_query = "SELECT ID_Kelas FROM Kelas WHERE Nama_Kelas = '$id_temp'";
+echo "fak";
+echo $input_kelas;
+echo "fak";
 $result_kelas = $connection->query($id_query);
 $row_kelas = $result_kelas->fetch_assoc();
 $kelas = $row_kelas['ID_Kelas'];

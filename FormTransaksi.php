@@ -56,14 +56,17 @@ if (!isset($_SESSION['username_guru'])) {
                     <h1>Transaksi Input</h1>
                     <div class="input-group mb-3">
                         <div class="input-group-text">Kelas</div>
-                        <select class="form-select" id="inputkelas" name="input_kelas" aria-label="inputkelas">
+                        
+                        <select class="form-select disable" id="input_kelas" name="input_kelas" aria-label="inputkelas" disabled>
                             <?php
                               include('connection.php');
-                              $query = "SELECT Nama_Kelas FROM Kelas";
+                              $id_guru = $_SESSION['ID_Guru'];
+                              $query = "SELECT Nama_Kelas FROM Kelas WHERE Kelas.ID_Guru='$id_guru'";
                               $result = $connection->query($query);
                               if ($result->num_rows > 0) {
                                 while($row = $result->fetch_assoc()) {
-                                  echo "<option selected>". $row['Nama_Kelas']. "</option>";
+
+                                  echo "<option selected>". $_SESSION['Nama_Kelas']. "</option>";
                                 }
                               }
                             ?>

@@ -13,7 +13,7 @@ if (!isset($_SESSION['username_guru'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="css\main.min.css?v="<?php echo time(); ?>">
+    <link rel="stylesheet" href="css\main.min.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="styles.css?v=<?php echo time(); ?>">
 </head>
 
@@ -80,7 +80,8 @@ if (!isset($_SESSION['username_guru'])) {
 
                 <div class="row mx-3 my-3">
                     <div class="mx-3 my-3 bg-primary col rounded-5 image-transaction-container d-flex flex-wrap p-0">
-                        <img src="<?= $row['image']?>" alt="" class="" height="282px">
+                        <?php $imageURL = 'img/'.$row['image'];?>
+                        <img src="<?= $imageURL?>" alt="" class="" height="282px">
                     </div>
 
                     <div class="mx-3 my-3 bg-primary col rounded-5  p-2">
@@ -89,7 +90,7 @@ if (!isset($_SESSION['username_guru'])) {
                         <div class="fs-5"> <?= $row['Deskripsi_Transaksi'] ?></div>
                         <div class="fs-5">Catatan dari <?= $row['Nama_Guru'] ?>:</div>
                         <p><?= $row['Catatan_Guru'] ?></p>
-                        <div class="h3 rounded-5 text-end pe-4">Detail→</div>
+                        <!-- <div class="h3 rounded-5 text-end pe-4">Detail→</div> -->
                     </div>
                 </div>
                 <?php }while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) ?>

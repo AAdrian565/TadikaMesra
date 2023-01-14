@@ -50,6 +50,7 @@ if (!isset($_SESSION['username_guru'])) {
                 </a>
             </nav>
             <!-- CONTENT START -->
+            <div class="col-10 main-content">
             <?php function OpenCon(){
                     $dbhost = "localhost"; $dbuser = "root"; $dbpass = "";
                     $db_name = "database_tk";
