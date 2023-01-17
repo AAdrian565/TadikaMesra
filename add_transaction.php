@@ -18,7 +18,10 @@ $input_kelas = $_POST['input_kelas'];
   echo "wow";
 $input_mapel = $_POST['input_mapel'];
   echo "wow";
-$input_gambar = $_POST['input_gambar'];
+$input_gambar = $_FILES['input_gambar']['tmp_name'];
+$file = fopen($MY_FILE, 'r');
+$file_contents = fread($file, filesize($MY_FILE));
+$file_contents = addslashes($file_contents);
   echo "wow";
 $input_makanan = $_POST['input_makanan'];
 $deskripsi_transaksi = $_POST['deskripsi_transaksi'];
@@ -29,7 +32,7 @@ $search_foto = "SELECT ID_Foto FROM Foto ORDER BY ID_Foto DESC LIMIT 1";
 $result_foto = $connection->query($search_foto);
 $id_foto = null;
 if ($result_foto->num_rows == 0) {
-  $query_foto = "INSERT INTO Foto (ID_Foto, Nama_Foto, image) VALUE ('F001', 'Foto1', '$input_gambar')";
+  $query_foto = "INSERT INTO Foto (ID_Foto, Nama_Foto, image) VALUE ('F001', 'Foto1', '$file_contents')";
   if ($connection->query($query_foto)) {
     //header("location: FormTransaksi.php");
   } else {
