@@ -64,41 +64,36 @@ if (!isset($_SESSION['username_guru'])) {
                 $conn = OpenCon();
                 $sql = 
                 "
-                    SELECT Transaksi.Date, Makanan.Nama_Makanan, Transaksi.Deskripsi_Transaksi, Guru.Nama_Guru, Transaksi.Catatan_Guru, Foto.image
-                    FROM Transaksi
-                    JOIN Kelas ON Transaksi.ID_Kelas = Kelas.ID_Kelas
-                    JOIN Guru ON Kelas.ID_Guru = Guru.ID_Guru
-                    JOIN Makanan ON Transaksi.ID_Makanan = Makanan.ID_Makanan
-                    JOIN Foto ON Transaksi.ID_Foto = Foto.ID_Foto
-                    WHERE Guru.ID_Guru = '$ID';
+                    SELECT t.Date, m.Nama_Makanan, f.image, t.Deskripsi_Transaksi, t.Catatan_Guru
+                    FROM Transaksi t
+                    JOIN Makanan m on t.ID_Makanan = m.ID_Makanan
+                    LEFT JOIN Foto f ON f.ID_Foto = t.ID_Foto
+                    JOIN Siswa s ON t.ID_Siswa = s.ID_Siswa
+                    JOIN Kelas k ON k.ID_Kelas = s.ID_Kelas
+                    JOIN Guru g ON k.ID_Guru = g.ID_Guru
+                    WHERE g.ID_Guru = 'G001';
                 ";
                 $result = mysqli_query($conn, $sql);
                 $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                 do{
                 ?>
 
-<<<<<<< HEAD
-
                 <div class="row mx-3 my-3">
-                    <div class="mx-3 my-3 bg-primary col rounded-5 image-transaction-container d-flex flex-wrap p-0">
+                    <?php if(!is_null($row['image'])){?>
+                    <div class="mx-3 my-2 bg-primary col-7 rounded-5 image-transaction-container d-flex flex-wrap p-0">
                         <?php $imageURL = $row['image']; echo $imageURL?>
-=======
-	
-		<div class="row mx-3 my-3">
-                    <gfhfghfghfghfghfghf>
-                        <?php $imageURL = 'img/'.$row['image'];?>
->>>>>>> refs/remotes/origin/master
                         <img src="<?= $imageURL?>" alt="" class="" height="282px">
                     </div>
+                    <?php } ?>
 
-		    <div class="mx-3 my-3 bg-primary col rounded-5  p-4">
-                        <div class="h2"><?= $row['Date'] ?></div>
-                        <div class="fs-5"> Makan Siang: <?= $row['Nama_Makanan'] ?></div>
-                        <div class="fs-5"> <?= $row['Deskripsi_Transaksi'] ?></div>
-                        <div class="fs-5">Catatan dari <?= $row['Nama_Guru'] ?>:</div>
-                        <p><?= $row['Catatan_Guru'] ?></p>
-                        <!-- <div class="h3 rounded-5 text-end pe-4">Detail→</div> -->
+		            <div class="mx-3 my-2 bg-primary col-6 rounded-5  p-4">
+                            <div class="m-2 h2"><?= $row['Date'] ?></div>
+                            <div class="mx-2 fs-5"> Makan Siang: <?= $row['Nama_Makanan'] ?></div>
+                            <div class="mx-2 fs-5"> <?= $row['Deskripsi_Transaksi'] ?></div>
+                            <div class="mx-2 fs-5">Catatan untuk murid:</div>
+                            <p class="mx-2 ms-4"><?= $row['Catatan_Guru'] ?></p>
                     </div>
+                
                 </div>
                 <?php }while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) ?>
 
