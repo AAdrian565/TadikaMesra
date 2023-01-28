@@ -1,3 +1,5 @@
+DROP TABLE Transaksi;DROP TABLE Makanan;DROP TABLE Absensi;DROP TABLE KelasMapel;DROP TABLE Mapel;DROP TABLE Foto;DROP TABLE Siswa;DROP TABLE Kelas;DROP TABLE Guru;
+
 -- List Nama, ID, Kelas, dan Guru
 SELECT Siswa.Nama_Siswa, Siswa.ID_Siswa, Kelas.Nama_Kelas, Guru.Nama_Guru AS Wali_Kelas
 FROM Siswa

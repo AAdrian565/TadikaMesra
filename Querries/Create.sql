@@ -56,14 +56,15 @@ CREATE TABLE Makanan(
 );
 
 CREATE TABLE Transaksi(
-    ID_Transaksi CHAR(10) PRIMARY KEY NOT NULL,
+    ID_Transaksi INT AUTO_INCREMENT PRIMARY KEY,
     Date DATE NOT NULL,
-    ID_Kelas CHAR(4) NOT NULL, FOREIGN KEY (ID_Kelas) REFERENCES Kelas(ID_Kelas),
+    ID_Siswa CHAR(4) NOT NULL, FOREIGN KEY (ID_Siswa) REFERENCES Siswa(ID_Siswa),
     ID_Foto CHAR(10), FOREIGN KEY (ID_Foto) REFERENCES Foto (ID_Foto),
     ID_Makanan CHAR(10), FOREIGN KEY (ID_Makanan) REFERENCES Makanan (ID_Makanan),
     Deskripsi_Transaksi VARCHAR (200),
     Catatan_Guru VARCHAR (200)
 );
+
 
 INSERT INTO Guru (ID_Guru, Nama_Guru, Alamat, No_HP, Jenis_Kelamin) 
 VALUES  ('G001', 'John Smith', 'Jl. Merdeka No. 12', '089268398416', 'Laki-laki'),
@@ -264,34 +265,6 @@ VALUES  ('M001', 'Nasi Goreng'),
         ('M009', 'Sate Kambing'),
         ('M010', 'Nasi Pecel');
 
-INSERT INTO Transaksi (ID_Transaksi, Date, ID_Kelas, ID_Foto, ID_Makanan, Deskripsi_Transaksi, Catatan_Guru)
-VALUES  ('T000000001', '2022-01-01', 'K001', 'F001', 'M001', 'Siswa kelas 1A mengikuti ekskursi ke museum', 'Ekskursi ini sangat bermanfaat bagi pemahaman siswa tentang sejarah'),
-        ('T000000002', '2022-01-02', 'K001', 'F002', 'M002', 'Siswa kelas 1A melakukan diskusi kelompok tentang materi fisika', 'Semua siswa aktif dan konsentrasi dalam diskusi'),
-        ('T000000003', '2022-01-03', 'K001', 'F003', 'M003', 'Siswa kelas 1A mengikuti lomba menulis esai', 'Siswa mendapatkan peringkat ke-2 dalam lomba'),
-        ('T000000004', '2022-01-01', 'K002', 'F004', 'M004', 'Siswa kelas 1B mengikuti olimpiade matematika', 'Siswa berhasil meraih medali perak'),
-        ('T000000005', '2022-01-02', 'K002', 'F005', 'M005', 'Siswa kelas 1B melakukan praktikum kimia', 'Semua siswa menunjukkan hasil yang baik dalam praktikum'),
-        ('T000000006', '2022-01-03', 'K002', 'F006', 'M006', 'Siswa kelas 1B mengikuti lomba lari', 'Siswa berhasil meraih peringkat ke-3 dalam lomba'),
-        ('T000000007', '2022-01-01', 'K003', 'F007', 'M007', 'Siswa kelas 2A mengikuti seminar tentang teknologi', 'Siswa mendapatkan banyak informasi yang berguna dari seminar'),
-        ('T000000008', '2022-01-02', 'K003', 'F008', 'M008', 'Siswa kelas 2A melakukan eksperimen biologi', 'Semua siswa menunjukkan hasil yang baik dalam eksperimen'),
-        ('T000000009', '2022-01-03', 'K003', 'F009', 'M009', 'Siswa kelas 2A mengikuti lomba debat', 'Siswa berhasil meraih juara pertama dalam lomba'),
-        ('T000000010', '2022-10-01', 'K004', 'F010', 'M001', 'Siswa K002 mengikuti lomba menyanyi di sekolah', 'Siswa K002 berhasil meraih juara 2 dalam lomba menyanyi sekolah hari ini'),
-        ('T000000011', '2022-10-01', 'K004', 'F010', 'M001', 'Siswa K003 mengikuti kegiatan ekstrakurikuler seni', 'Siswa K003 tampil sangat apik dalam kegiatan ekstrakurikuler seni hari ini'),
-        ('T000000012', '2022-10-02', 'K004', 'F010', 'M001', 'Siswa K001 mengikuti kegiatan ekstrakurikuler bola', 'Semua siswa K001 tampil cemerlang dalam kegiatan ekstrakurikuler bola hari ini'),
-        ('T000000013', '2022-10-02', 'K005', 'F010', 'M001', 'Siswa K002 mengikuti lomba menyanyi di sekolah', 'Siswa K002 berhasil meraih juara 2 dalam lomba menyanyi sekolah hari ini'),
-        ('T000000014', '2022-10-02', 'K005', 'F010', 'M001', 'Siswa K003 mengikuti kegiatan ekstrakurikuler seni', 'Siswa K003 tampil sangat apik dalam kegiatan ekstrakurikuler seni hari ini'),
-        ('T000000015', '2022-10-03', 'K005', 'F010', 'M001', 'Siswa K001 mengikuti kegiatan ekstrakurikuler bola', 'Semua siswa K001 tampil cemerlang dalam kegiatan ekstrakurikuler bola hari ini'),
-        ('T000000016', '2022-10-03', 'K006', 'F010', 'M001', 'Siswa K002 mengikuti lomba menyanyi di sekolah', 'Siswa K002 berhasil meraih juara 2 dalam lomba menyanyi sekolah hari ini'),
-        ('T000000017', '2022-10-03', 'K006', 'F010', 'M001', 'Siswa K003 mengikuti kegiatan ekstrakurikuler seni', 'Siswa K003 tampil sangat apik dalam kegiatan ekstrakurikuler seni hari ini'),
-        ('T000000018', '2022-01-15', 'K006', 'F001', 'M001', 'Siswa K001 melakukan kegiatan belajar mengajar di kelas', 'Semua siswa K001 tampak fokus dalam belajar'),
-        ('T000000019', '2022-01-15', 'K007', 'F002', 'M002', 'Siswa K002 melakukan ekskul basket', 'Siswa K002 tampak aktif dalam ekskul basket'),
-        ('T000000020', '2022-01-15', 'K007', 'F003', 'M003', 'Siswa K003 melakukan kegiatan belajar mengajar di kelas', 'Semua siswa K003 tampak fokus dalam belajar'),
-        ('T000000021', '2022-01-16', 'K007', 'F004', 'M004', 'Siswa K001 melakukan ekskul seni', 'Siswa K001 tampak antusias dalam ekskul seni'),
-        ('T000000022', '2022-01-16', 'K008', 'F005', 'M005', 'Siswa K002 melakukan kegiatan belajar mengajar di kelas', 'Semua siswa K002 tampak fokus dalam belajar'),
-        ('T000000023', '2022-01-16', 'K008', 'F006', 'M006', 'Siswa K003 melakukan ekskul musik', 'Siswa K003 tampak aktif dalam ekskul musik'),
-        ('T000000024', '2022-01-17', 'K008', 'F007', 'M007', 'Siswa K001 melakukan kegiatan belajar mengajar di kelas', 'Semua siswa K001 tampak fokus dalam belajar'),
-        ('T000000025', '2022-01-17', 'K009', 'F008', 'M008', 'Siswa K002 melakukan ekskul olahraga', 'Siswa K002 tampak aktif dalam ekskul olahraga'),
-        ('T000000026', '2022-01-17', 'K009', 'F009', 'M009', 'Siswa K003 melakukan kegiatan belajar mengajar di kelas', 'Semua siswa K003 tampak fokus dalam belajar'),
-        ('T000000027', '2022-07-10', 'K009', 'F006', 'M006', 'Siswa kelas 1A melakukan diskusi dalam kelas tentang materi sejarah', 'Siswa kelas 1A cukup aktif dalam diskusi dan menunjukkan hasil yang baik dalam pemahaman materi'),
-        ('T000000028', '2022-07-10', 'K010', 'F007', 'M007', 'Siswa kelas 1B melakukan presentasi dalam kelas tentang materi biologi', 'Siswa kelas 1B cukup kompeten dalam menyajikan presentasi dan memahami materi'),
-        ('T000000029', '2022-07-10', 'K010', 'F008', 'M008', 'Siswa kelas 2A mengikuti lomba olimpiade matematika tingkat sekolah', 'Siswa kelas 2A berhasil meraih juara 2 dalam lomba olimpiade matematika'),
-        ('T000000030', '2022-07-10', 'K010', 'F009', 'M009', 'Siswa kelas 2B melakukan eksperimen dalam kelas tentang materi kimia', 'Siswa kelas 2B cukup aktif dalam melakukan eksperimen dan menunjukkan hasil yang baik dalam pemahaman materi');
+INSERT INTO Transaksi (Date, ID_Siswa, ID_Makanan, Deskripsi_Transaksi, Catatan_Guru)
+VALUES ('2022-01-02', 'S001', 'M001', 'Pembelian makanan untuk kelas 2', 'Tidak ada catatan khusus'),
+       ('2022-01-02', 'S001', 'M001', 'Pembelian makanan untuk kelas 2', 'Tidak ada catatan khusus');
