@@ -56,7 +56,6 @@ if (!isset($_SESSION['username_guru'])) {
                     <h1>Transaksi Input</h1>
                     <div class="input-group mb-3">
                         <div class="input-group-text">Kelas</div>
-                        
                         <select class="form-select disable" id="input_kelas" name="input_kelas" aria-label="inputkelas" disabled>
                             <?php
                               include('connection.php');
@@ -74,9 +73,29 @@ if (!isset($_SESSION['username_guru'])) {
                     </div>
 
                     <div class="input-group mb-3">
+                        <div class="input-group-text">Siswa</div>
+                        <select class="form-select" id="input_anak" name="input_anak" aria-label="inputanak">
+                            <?php
+                              include('connection.php');
+                              $id_guru = $_SESSION['ID_Guru'];
+                              $query = "SELECT Siswa.Nama_Siswa FROM Siswa, Kelas WHERE Siswa.ID_Kelas = Kelas.ID_Kelas AND Kelas.ID_Guru = '$id_guru'";
+                              $result = $connection->query($query);
+                              if ($result->num_rows > 0) {
+                                while($row = $result->fetch_assoc()) {
+
+                                  echo "<option selected>". $row['Nama_Siswa']. "</option>";
+                                }
+                              }
+                            ?>
+                        </select>
+                    </div>
+
+
+                    <div class="input-group mb-3">
                         <input type="file" class="form-control" id="inputgambar" name="input_gambar"
                             aria-describedby="inputGroupFileAddon03" aria-label="Upload">
                     </div>
+
                     <div class="input-group mb-3 d-flex flex-column">
                         <label for="deskripsi_transaksi" class="form-label">Deskripsi Transaksi</label>
                         <textarea class="form-control w-100" id="deskripsi_transaksi" name="deskripsi_transaksi" rows="3"></textarea>

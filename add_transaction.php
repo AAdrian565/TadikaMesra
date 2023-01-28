@@ -9,27 +9,42 @@ if (!isset($_SESSION['username_guru'])) {
 include('connection.php');
 
 $targetDir = "img/";
-$fileName = basename($_FILES["file"]["name"]);
-$targetFilePath = $targetDir . $fileName;
-$fileType = pathinfo($targetFilePath,PATHINFO_EXTENSION);
+print_r($_FILES);
+//$fileName = basename($_FILES["file"]["name"]);
+//$targetFilePath = $targetDir . $fileName;
+//$fileType = pathinfo($targetFilePath,PATHINFO_EXTENSION);
+//$MY_FILES = $_FILES["file"]["tmp_name"];
+//echo $_FILES["file"]["tmp_name"];
+
+//$file = fopen($MY_FILES, 'r');
+//$file_contents = fread($file, filesize($MY_FILES));
+//fclose($file);
+//$file_contents = addslashes(file_get_contents($_FILES['file']['tmp_name']));
   echo "wow";
 // get data from form
-$input_kelas = $_POST['input_kelas'];
+//$input_kelas = $_POST['input_kelas'];
   echo "wow";
-$input_mapel = $_POST['input_mapel'];
+//$input_mapel = $_POST['input_mapel'];
   echo "wow";
-$input_gambar = $_POST['input_gambar'];
+//$input_gambar = $_POST['input_gambar'];
+$input_anak = $_POST['input_anak'];
   echo "wow";
 $input_makanan = $_POST['input_makanan'];
 $deskripsi_transaksi = $_POST['deskripsi_transaksi'];
 $catatan_guru = $_POST['catatan_guru'];
 
+$search_id_anak = "SELECT ID_Siswa FROM Siswa WHERE Siswa.Nama_Siswa = '$input_anak'";
+$result_id_anak = $connection->query($search_id_anak);
+$id_anak_row = $result_id_anak->fetch_assoc();
+$id_anak = $id_anak_row['ID_Siswa'];
+
 // query search database 
 $search_foto = "SELECT ID_Foto FROM Foto ORDER BY ID_Foto DESC LIMIT 1";
 $result_foto = $connection->query($search_foto);
 $id_foto = null;
+
 if ($result_foto->num_rows == 0) {
-  $query_foto = "INSERT INTO Foto (ID_Foto, Nama_Foto, image) VALUE ('F001', 'Foto1', '$input_gambar')";
+  $query_foto = "INSERT INTO Foto (ID_Foto, Nama_Foto, image) VALUE ('F001', 'Foto1', '$file_contents')";
   if ($connection->query($query_foto)) {
     //header("location: FormTransaksi.php");
   } else {
@@ -57,12 +72,12 @@ if ($result_foto->num_rows == 0) {
   array_push($foto, $foto_id[0], $foto_id[1], $foto_id[2]);
   $foto_push = implode("", $foto);
   $id_foto = $foto_push;
-  $query_foto = "INSERT INTO Foto (ID_Foto, Nama_Foto, image) VALUE ('$foto_push', 'Foto1', '$fileName')";
-  if ($connection->query($query_foto)) {
-    //header("location: FormTransaksi.php");
-  } else {
-    echo "Data gagal disimpan!";
-  }
+  //$query_foto = "INSERT INTO Foto (ID_Foto, Nama_Foto, image) VALUE ('$foto_push', 'Foto1', '$fileName')";
+  //if ($connection->query($query_foto)) {
+  //  //header("location: FormTransaksi.php");
+  //} else {
+  //  echo "Data gagal disimpan!";
+  //}
   //echo $wow
 }
 
@@ -109,55 +124,24 @@ if ($result_makanan->num_rows == 0) {
   $id_makanan = $makanan_push;
 }
 // queery insert into database
-$search_query = "SELECT ID_Transaksi FROM Transaksi ORDER BY ID_Transaksi DESC LIMIT 1";
-$id_trans = null;
-$result_query = $connection->query($search_query);
-  echo "wow";
-if ($result_query->num_rows == 0) {
-  echo "wow";
-  $id_trans = "T001";
-  echo "wow";
-} else {
-  $row = $result_query->fetch_assoc();
-  echo "wow";
-  $str_id = str_split($row['ID_Transaksi']);
-  $str_id_num = array_slice($str_id, 1);
-  $query_id = array_map('intval', $str_id_num);
-  print_r($str_id_num);
-  if ($query_id[2] == 9) {
-    $query_id[2] = 0;
-    $query_id[1] += 1;
-  } else if ($query_id[2] < 9) {
-    $query_id[2] += 1;
-  }
-  if ($query_id[1] == 9) {
-    $query_id[1] = 0;
-    $query_id[0] += 1;
-  }
-  print_r($str_id);
-  $query = array('T');
-  array_push($query, $query_id[0], $query_id[1], $query_id[2]);
-  $query_push = implode("", $query);
-  $id_trans = $query_push;
-  echo "wow";
-}
+
 
 $id_temp = $_SESSION['Nama_Kelas'];
 //$id_temp_temp = $id_temp->fetch_assoc();
 echo $id_temp;
 $id_query = "SELECT ID_Kelas FROM Kelas WHERE Nama_Kelas = '$id_temp'";
 echo "fak";
-echo $input_kelas;
+//echo $input_kelas;
 echo "fak";
-$result_kelas = $connection->query($id_query);
-$row_kelas = $result_kelas->fetch_assoc();
-$kelas = $row_kelas['ID_Kelas'];
-print_r($row_kelas);
+//$result_kelas = $connection->query($id_query);
+//$row_kelas = $result_kelas->fetch_assoc();
+//$kelas = $row_kelas['ID_Kelas'];
+//print_r($row_kelas);
 $date = date("Y-m-d");
-$query_transaksi = "INSERT INTO Transaksi (ID_Transaksi, Date, ID_Kelas, ID_Foto, ID_Makanan, Deskripsi_Transaksi, Catatan_Guru) 
-                    VALUE ('$id_trans', '$date', '$kelas', '$id_foto', '$id_makanan', '$deskripsi_transaksi', '$catatan_guru')";
+$query_transaksi = "INSERT INTO Transaksi (Date, ID_Siswa, ID_Foto, ID_Makanan, Deskripsi_Transaksi, Catatan_Guru) 
+                    VALUE ('$date', '$id_anak', null, '$id_makanan', '$deskripsi_transaksi', '$catatan_guru')";
   echo "wow";
-echo $id_trans;
+//echo $id_trans;
 
 if ($connection->query($query_transaksi)) {
   echo "wow";
