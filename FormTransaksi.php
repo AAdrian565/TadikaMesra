@@ -39,7 +39,7 @@ if (!isset($_SESSION['username_guru'])) {
                         <img src="images/transaction.png" alt="" width="30px" height="30px">
                         Transaction
                     </a>
-                    <a href="./FormTransaksi.php" class="mapel nav-side-item  mt-2 ms-3" style="display: block;">
+                    <a href="./FormTransaksi.php#" class="mapel nav-side-item  mt-2 ms-3" style="display: block;">
                         <img src="images/newTransaction.png" alt="" width="30px" maxheight="30px">
                         Add Transaction
                     </a>

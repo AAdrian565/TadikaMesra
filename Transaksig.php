@@ -35,7 +35,7 @@ if (!isset($_SESSION['username_guru'])) {
                         <img src="images/list.png" alt="" width="30px" , height="30px">
                         List Siswa
                     </a>
-                    <a href="./Transaksig.php" class="transaksi nav-side-item  mt-2 ms-3" style="display: block;">
+                    <a href="./Transaksig.php#" class="transaksi nav-side-item  mt-2 ms-3" style="display: block;">
                         <img src="images/transaction.png" alt="" width="30px" height="30px">
                         Transaction
                     </a>
@@ -77,14 +77,14 @@ if (!isset($_SESSION['username_guru'])) {
                 do{
                 ?>
 
-
-                <div class="row mx-3 my-3">
-                    <div class="mx-3 my-3 bg-primary col rounded-5 image-transaction-container d-flex flex-wrap p-0">
+	
+		<div class="row mx-3 my-3">
+                    <gfhfghfghfghfghfghf>
                         <?php $imageURL = 'img/'.$row['image'];?>
                         <img src="<?= $imageURL?>" alt="" class="" height="282px">
                     </div>
 
-                    <div class="mx-3 my-3 bg-primary col rounded-5  p-2">
+		    <div class="mx-3 my-3 bg-primary col rounded-5  p-4">
                         <div class="h2"><?= $row['Date'] ?></div>
                         <div class="fs-5"> Makan Siang: <?= $row['Nama_Makanan'] ?></div>
                         <div class="fs-5"> <?= $row['Deskripsi_Transaksi'] ?></div>
