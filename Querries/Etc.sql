@@ -42,3 +42,10 @@ SELECT T.*
 FROM Transaksi T 
 JOIN Siswa S ON T.ID_Kelas = S.ID_Kelas
 WHERE S.ID_Siswa = 'S001';
+
+SELECT Date, m.Nama_Makanan, f.image, t.Deskripsi_Transaksi, t.Catatan_Guru
+FROM Transaksi t
+LEFT JOIN Makanan m ON t.ID_Makanan = m.ID_Makanan
+LEFT JOIN Foto f ON t.ID_Foto = f.ID_Foto
+JOIN Siswa s ON t.ID_Siswa = s.ID_Siswa
+WHERE s.ID_Siswa = '$ID'
