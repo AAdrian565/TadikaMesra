@@ -80,7 +80,7 @@ if (!isset($_SESSION['username_guru'])) {
 
                 <div class="row mx-3 my-3">
                     <div class="mx-3 my-3 bg-primary col rounded-5 image-transaction-container d-flex flex-wrap p-0">
-                        <?php $imageURL = 'img/'.$row['image'];?>
+                        <?php $imageURL = $row['image']; echo $imageURL?>
                         <img src="<?= $imageURL?>" alt="" class="" height="282px">
                     </div>
 
