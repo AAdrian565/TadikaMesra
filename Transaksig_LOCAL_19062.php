@@ -35,17 +35,13 @@ if (!isset($_SESSION['username_guru'])) {
                         <img src="images/list.png" alt="" width="30px" , height="30px">
                         List Siswa
                     </a>
-                    <a href="./Transaksig.php#" class="transaksi nav-side-item  mt-2 ms-3" style="display: block;">
+                    <a href="./Transaksig.php" class="transaksi nav-side-item  mt-2 ms-3" style="display: block;">
                         <img src="images/transaction.png" alt="" width="30px" height="30px">
                         Transaction
                     </a>
                     <a href="./FormTransaksi.php" class="mapel nav-side-item  mt-2 ms-3" style="display: block;">
                         <img src="images/newTransaction.png" alt="" width="30px" maxheight="30px">
                         Add Transaction
-                    </a>
-                    <a href="./grading.php#" class="mapel nav-side-item  mt-2 ms-3" style="display: block;">
-                        <img src="https://cdn-icons-png.flaticon.com/512/2228/2228722.png" alt="" width="30px" maxheight="30px">
-                        Grading
                     </a>
                 </div>
                 <a href="./logout.php" class=" nav-side-item mt-2 ms-3 mb-5 pb-5" style="display: block;">
@@ -81,21 +77,14 @@ if (!isset($_SESSION['username_guru'])) {
                 do{
                 ?>
 
-<<<<<<< HEAD
 
                 <div class="row mx-3 my-3">
                     <div class="mx-3 my-3 bg-primary col rounded-5 image-transaction-container d-flex flex-wrap p-0">
                         <?php $imageURL = $row['image']; echo $imageURL?>
-=======
-	
-		<div class="row mx-3 my-3">
-                    <gfhfghfghfghfghfghf>
-                        <?php $imageURL = 'img/'.$row['image'];?>
->>>>>>> refs/remotes/origin/master
                         <img src="<?= $imageURL?>" alt="" class="" height="282px">
                     </div>
 
-		    <div class="mx-3 my-3 bg-primary col rounded-5  p-4">
+                    <div class="mx-3 my-3 bg-primary col rounded-5  p-2">
                         <div class="h2"><?= $row['Date'] ?></div>
                         <div class="fs-5"> Makan Siang: <?= $row['Nama_Makanan'] ?></div>
                         <div class="fs-5"> <?= $row['Deskripsi_Transaksi'] ?></div>

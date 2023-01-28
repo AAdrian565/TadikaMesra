@@ -55,26 +55,9 @@ if (!isset($_SESSION['username_guru'])) {
             </nav>
             <!-- CONTENT START -->
             <div class="col-10 main-content">
-                <form action="add_transaction.php" method="POST">
+                <form action="add_grading.php" method="POST">
                 <div class="row m-3">
-                    <h1>Transaksi Input</h1>
-                    <div class="input-group mb-3">
-                        <div class="input-group-text">Kelas</div>
-                        <select class="form-select disable" id="input_kelas" name="input_kelas" aria-label="inputkelas" disabled>
-                            <?php
-                              include('connection.php');
-                              $id_guru = $_SESSION['ID_Guru'];
-                              $query = "SELECT Nama_Kelas FROM Kelas WHERE Kelas.ID_Guru='$id_guru'";
-                              $result = $connection->query($query);
-                              if ($result->num_rows > 0) {
-                                while($row = $result->fetch_assoc()) {
-
-                                  echo "<option selected>". $_SESSION['Nama_Kelas']. "</option>";
-                                }
-                              }
-                            ?>
-                        </select>
-                    </div>
+                    <h1>Grading siswa</h1>
 
                     <div class="input-group mb-3">
                         <div class="input-group-text">Siswa</div>
@@ -94,26 +77,33 @@ if (!isset($_SESSION['username_guru'])) {
                         </select>
                     </div>
 
-
+                    <?php
+                      include('connection.php');
+                      $id_guru = $_SESSION['ID_Guru'];
+                      $query = "SELECT Mapel.Nama_Mapel FROM Mapel
+                                JOIN KelasMapel ON Mapel.ID_Mapel = KelasMapel.ID_Mapel
+                                WHERE KelasMapel.ID_Guru = '$id_guru'";
+                      $result = $connection->query($query);
+                      $row = $result->fetch_assoc()
+                    ?>
                     <div class="input-group mb-3">
-                        <input type="file" class="form-control" id="inputgambar" name="input_gambar"
-                            aria-describedby="inputGroupFileAddon03" aria-label="Upload">
+                    <div class="input-group-text">Nilai <?= $row['Nama_Mapel']?> </div>
+                        <select class="form-select" id="input_<?=strtolower($row['Nama_Mapel'])?>" name="input_<?=strtolower($row['Nama_Mapel'])?>" aria-label="input<?=strtolower($row['Nama_Mapel'])?>">
+                            <option selected>A</option>
+                            <option>B</option>
+                            <option>C</option>
+                            <option>D</option>
+                        </select>
+                    </div>
+                    <div class="input-group mb-3 d-flex flex-column">
+                        <label for="deskripsi_<?=strtolower($row['Nama_Mapel'])?>" class="form-label">Deskripsi Nilai <?=strtolower($row['Nama_Mapel'])?> </label>
+                        <textarea class="form-control w-100" id="deskripsi_<?=strtolower($row['Nama_Mapel'])?>" name="deskripsi_<?=strtolower($row['Nama_Mapel'])?>" rows="3"></textarea>
                     </div>
 
-                    <div class="input-group mb-3 d-flex flex-column">
-                        <label for="deskripsi_transaksi" class="form-label">Deskripsi Transaksi</label>
-                        <textarea class="form-control w-100" id="deskripsi_transaksi" name="deskripsi_transaksi" rows="3"></textarea>
-                    </div>
-                    <div class="input-group mb-3 d-flex flex-column">
-                        <label for="catatan_guru" class="form-label">Catatan Guru</label>
-                        <textarea class="form-control w-100" id="catatan_guru" name="catatan_guru" rows="3"></textarea>
-                    </div>
-                    <div class="input-group mb-3 d-flex flex-column">
-                        <label for="input_makanan" class="form-label">Input Makanan</label>
-                        <textarea class="form-control w-100" id="input_makanan" name="input_makanan" rows="3"></textarea>
-                    </div>
+
                 </div>
                 <button class="btn btn-primary ms-4" type="submit">Submit</button>
+                <br>
                 </form>
             </div>
             <!-- CONTENT END -->
