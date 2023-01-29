@@ -23,16 +23,24 @@ CREATE TABLE Siswa(
     No_HP_Orangtua CHAR(14)
 );
 
+CREATE TABLE SiswaMapel(
+    ID_SiswaMapel INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    ID_Siswa CHAR(10) NOT NULL,
+    Nama_Guru VARCHAR(30),
+    Nama_Mapel VARCHAR(20),
+    Nilai CHAR(4),
+    Deskripsi VARCHAR(100)
+);
+
 CREATE TABLE Mapel(
     ID_Mapel CHAR(4) PRIMARY KEY NOT NULL,
-    Nama_Mapel VARCHAR(20),
-    ID_Kategori CHAR(4)
+    Nama_Mapel VARCHAR(20)
 );
 
 CREATE TABLE KelasMapel (
     ID_Kelas CHAR(4), FOREIGN KEY (ID_Kelas) REFERENCES Kelas(ID_Kelas),
     ID_Mapel CHAR(4), FOREIGN KEY (ID_Mapel) REFERENCES Mapel(ID_Mapel),
-    ID_Guru CHAR(4), FOREIGN KEY(ID_Guru) REFERENCES Guru(ID_Guru)    
+    ID_Guru CHAR(4), FOREIGN KEY(ID_Guru) REFERENCES Guru(ID_Guru)
 );
 
 CREATE TABLE Foto(
@@ -203,32 +211,27 @@ VALUES ('S001', 'K001', '2018-01-12', 'Aditya', 'Laki-laki', 'Arifin', 'Jl. Merd
        ('S099', 'K010', '2018-08-31', 'Suprianto', 'Laki-laki', 'Zulfikar', 'Jl. Jenderal Soedirman No. 90', '084215903827'),
        ('S100', 'K010', '2018-12-20', 'Tri', 'Laki-laki', 'Agung', 'Jl. Brigjen Katamso No. 23', '083094285713');
 
-INSERT INTO Mapel (ID_Mapel, Nama_Mapel, ID_Kategori) 
-VALUES  ('M001', 'Matematika', 'A'),
-        ('M002', 'Bahasa Inggris', 'A'),
-        ('M003', 'Bahasa Indonesia', 'A'),
-        ('M004', 'Fisika', 'B'),
-        ('M005', 'Kimia', 'B'),
-        ('M006', 'Biologi', 'B'),
-        ('M007', 'Sejarah', 'C'),
-        ('M008', 'Geografi', 'C'),
-        ('M009', 'Sosiologi', 'C'),
-        ('M010', 'Ekonomi', 'C');
+INSERT INTO Mapel (ID_Mapel, Nama_Mapel) 
+VALUES  ('M001', 'Membaca'),
+        ('M002', 'Menulis'),
+        ('M003', 'Berhitung'),
+        ('M004', 'Menggambar'),
+        ('M005', 'Mewarnai');
 
 INSERT INTO KelasMapel (ID_Kelas, ID_Mapel, ID_Guru) 
 VALUES  ('K001', 'M001', 'G001'), ('K001', 'M002', 'G002'),
         ('K001', 'M003', 'G003'), ('K002', 'M004', 'G004'),
-        ('K002', 'M005', 'G005'), ('K002', 'M006', 'G006'),
-        ('K003', 'M007', 'G007'), ('K003', 'M008', 'G008'),
-        ('K003', 'M009', 'G009'), ('K004', 'M010', 'G010'),
+        ('K002', 'M005', 'G005'), ('K002', 'M004', 'G006'),
+        ('K003', 'M005', 'G007'), ('K003', 'M005', 'G008'),
+        ('K003', 'M004', 'G009'), ('K004', 'M002', 'G010'),
         ('K005', 'M001', 'G001'), ('K005', 'M002', 'G002'),
         ('K005', 'M003', 'G003'), ('K006', 'M004', 'G004'),
-        ('K006', 'M005', 'G005'), ('K006', 'M006', 'G006'),
-        ('K007', 'M007', 'G007'), ('K007', 'M008', 'G008'),
-        ('K007', 'M009', 'G009'), ('K008', 'M010', 'G010'),
+        ('K006', 'M005', 'G005'), ('K006', 'M005', 'G006'),
+        ('K007', 'M005', 'G007'), ('K007', 'M001', 'G008'),
+        ('K007', 'M004', 'G009'), ('K008', 'M002', 'G010'),
         ('K009', 'M001', 'G001'), ('K009', 'M002', 'G002'),
         ('K009', 'M003', 'G003'), ('K010', 'M004', 'G004'),
-        ('K010', 'M005', 'G005'), ('K010', 'M006', 'G006');
+        ('K010', 'M005', 'G005'), ('K010', 'M003', 'G006');
 
 INSERT INTO Foto (ID_Foto, Nama_Foto, image)
 VALUES  ('F001', 'Adam Smith', 'image_data_1'),

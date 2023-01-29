@@ -60,6 +60,8 @@ if (!isset($_SESSION['username_siswa'])) {
                     return $conn;
                 }
                 $conn = OpenCon();
+                
+                $ID = $_SESSION['ID_Siswa'];
                 $sql = 
                 "
                     SELECT Kelas.Nama_Kelas, Guru.Nama_Guru FROM Kelas, Guru, Siswa 
@@ -80,21 +82,19 @@ if (!isset($_SESSION['username_siswa'])) {
                     </div>
                     <hr>
                     <div class="cont my-4">
-                        
                         <?php
                         function isEven($number){
                             return($number % 2 == 0);
                         }
+                
                         $ID = $_SESSION['ID_Siswa'];
-                        $sql = 
+                        $sql =
                         "
-                        SELECT Mapel.Nama_Mapel, Guru.Nama_Guru
+                        SELECT SiswaMapel.Nama_Mapel, SiswaMapel.Nama_Guru, SiswaMapel.Nilai, SiswaMapel.Deskripsi
                         FROM Siswa
-                        JOIN Kelas ON Siswa.ID_Kelas = Kelas.ID_Kelas
-                        JOIN KelasMapel ON Kelas.ID_Kelas = KelasMapel.ID_Kelas
-                        JOIN Mapel ON KelasMapel.ID_Mapel = Mapel.ID_Mapel
-                        JOIN Guru ON KelasMapel.ID_Guru = Guru.ID_Guru
-                        WHERE Siswa.ID_Siswa = '$ID'
+                        JOIN SiswaMapel ON SiswaMapel.ID_Siswa = Siswa.ID_Siswa
+                        
+                        WHERE Siswa.ID_Siswa = '$ID';
                         ";
                         $result = mysqli_query($conn, $sql);
                         $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
@@ -113,6 +113,8 @@ if (!isset($_SESSION['username_siswa'])) {
                                 aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
                                 <div class="progress-bar w-75"></div>
                             </div>
+                            <h5>Nilai: <?= $row['Nilai'] ?></h1>
+                            <p><?= $row['Deskripsi']?></p>
                         </div>
                         <?php if(!isEven($i)){?>
                     </div>
