@@ -1,4 +1,4 @@
--- DROP TABLE Transaksi;DROP TABLE Makanan;DROP TABLE Absensi;DROP TABLE KelasMapel;DROP TABLE Mapel;DROP TABLE Foto;DROP TABLE SiswaMapel;DROP TABLE Siswa;DROP TABLE Kelas;DROP TABLE Guru;
+DROP TABLE Transaksi;DROP TABLE Makanan;DROP TABLE Absensi;DROP TABLE KelasMapel;DROP TABLE Mapel;DROP TABLE Foto;DROP TABLE SiswaMapel;DROP TABLE Siswa;DROP TABLE Kelas;DROP TABLE Guru;
 
 CREATE TABLE Guru(
     ID_Guru CHAR(4) PRIMARY KEY NOT NULL,
@@ -260,9 +260,7 @@ VALUES
 
 INSERT INTO SiswaMapel (ID_Siswa, Nama_Guru, Nama_Mapel, Nilai, Deskripsi)
 VALUES
-('S001', 'John Smith', )
-
-
+('S001', 'John Smith', 'Membaca', 'A', 'Test');
 
 
 INSERT INTO Foto (ID_Foto, Nama_Foto, image)
