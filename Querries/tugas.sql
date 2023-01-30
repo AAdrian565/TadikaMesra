@@ -58,21 +58,21 @@ OR COUNT(ID_Mapel) = (
 -- Mencari Siswa yang paling rajin(paling banyak hadir) dan siswa yang paling sering sakit--
 CREATE VIEW SipalingRajin AS
 SELECT s.ID_Siswa, s.Nama_Siswa, s.Jenis_Kelamin
-FROM siswa s
-JOIN absensi a ON s.ID_Siswa = a.ID_Siswa
+FROM Siswa s
+JOIN Absensi a ON s.ID_Siswa = a.ID_Siswa
 GROUP BY s.ID_Siswa
 HAVING COUNT(CASE WHEN a.Keterangan = 'Hadir' THEN 1 END) = 
     (SELECT MAX(Hadir_Count)
      FROM (SELECT COUNT(CASE WHEN a1.Keterangan = 'Hadir' THEN 1 END) AS Hadir_Count
-           FROM absensi a1
+           FROM Absensi a1
            GROUP BY a1.ID_Siswa) AS SubQ);
 CREATE VIEW SipalingSakit AS
 SELECT s.ID_Siswa, s.Nama_Siswa, s.Jenis_Kelamin
-FROM siswa s
-JOIN absensi a ON s.ID_Siswa = a.ID_Siswa
+FROM Siswa s
+JOIN Absensi a ON s.ID_Siswa = a.ID_Siswa
 GROUP BY s.ID_Siswa
 HAVING COUNT(CASE WHEN a.Keterangan = 'Sakit' THEN 1 END) = 
     (SELECT MAX(Sakit_Count)
      FROM (SELECT COUNT(CASE WHEN a1.Keterangan = 'Sakit' THEN 1 END) AS Sakit_Count
-           FROM absensi a1
+           FROM Absensi a1
            GROUP BY a1.ID_Siswa) AS SubQ);
