@@ -47,6 +47,10 @@ if (!isset($_SESSION['username_guru'])) {
                         <img src="https://cdn-icons-png.flaticon.com/512/2228/2228722.png" alt="" width="30px" maxheight="30px">
                         Grading
                     </a>
+                    <a href="./saran.php#" class="mapel nav-side-item  mt-2 ms-3" style="display: block;">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/3/3d/Envelope-letter-icon.png" alt="" width="30px" maxheight="30px">
+                        Saran
+                    </a>
                 </div>
                 <a href="./logout.php#" class=" nav-side-item mt-2 ms-3 mb-5 pb-5" style="display: block;">
                     <img src="images/logout.png" alt="" width="30px" height="30px">

@@ -59,56 +59,22 @@ if (!isset($_SESSION['username_guru'])) {
             </nav>
             <!-- CONTENT START -->
             <div class="col-10 main-content">
-                <form action="add_grading.php" method="POST">
+                <form action="add_transaction.php" method="POST">
                 <div class="row m-3">
-                    <h1>Grading siswa</h1>
-
-                    <div class="input-group mb-3">
-                        <div class="input-group-text">Siswa</div>
-                        <select class="form-select" id="input_anak" name="input_anak" aria-label="inputanak">
-                            <?php
-                              include('connection.php');
-                              $id_guru = $_SESSION['ID_Guru'];
-                              $query = "SELECT Siswa.Nama_Siswa FROM Siswa, Kelas WHERE Siswa.ID_Kelas = Kelas.ID_Kelas AND Kelas.ID_Guru = '$id_guru'";
-                              $result = $connection->query($query);
-                              if ($result->num_rows > 0) {
-                                while($row = $result->fetch_assoc()) {
-
-                                  echo "<option selected>". $row['Nama_Siswa']. "</option>";
-                                }
-                              }
-                            ?>
-                        </select>
-                    </div>
-
+                    <h1>Pesan & Saran dari murid</h1>
+                    <hr>
                     <?php
                       include('connection.php');
-                      $id_guru = $_SESSION['ID_Guru'];
-                      $query = "SELECT Mapel.Nama_Mapel FROM Mapel
-                                JOIN KelasMapel ON Mapel.ID_Mapel = KelasMapel.ID_Mapel
-                                WHERE KelasMapel.ID_Guru = '$id_guru'";
+                      $query = "SELECT Siswa.Nama_Siswa, SaranGuru.Saran FROM SaranGuru
+                                JOIN Siswa ON SaranGuru.ID_Siswa = Siswa.ID_Siswa";
                       $result = $connection->query($query);
-                      $row = $result->fetch_assoc()
+                      if ($result->num_rows > 0) {
+                        while($row = $result->fetch_assoc()){
+                          echo "<h2>Pesan dari ". $row['Nama_Siswa']. "</h2>";
+                          echo "<p>". $row['Saran']. "</p><br>";
+                        }
+                      }
                     ?>
-                    <div class="input-group mb-3">
-                    <div class="input-group-text">Nilai <?= $row['Nama_Mapel']?> </div>
-                        <select class="form-select" id="input_<?=strtolower($row['Nama_Mapel'])?>" name="input_<?=strtolower($row['Nama_Mapel'])?>" aria-label="input<?=strtolower($row['Nama_Mapel'])?>">
-                            <option selected>A</option>
-                            <option>B</option>
-                            <option>C</option>
-                            <option>D</option>
-                        </select>
-                    </div>
-                    <div class="input-group mb-3 d-flex flex-column">
-                        <label for="deskripsi_<?=strtolower($row['Nama_Mapel'])?>" class="form-label">Deskripsi Nilai <?=strtolower($row['Nama_Mapel'])?> </label>
-                        <textarea class="form-control w-100" id="deskripsi_<?=strtolower($row['Nama_Mapel'])?>" name="deskripsi_<?=strtolower($row['Nama_Mapel'])?>" rows="3"></textarea>
-                    </div>
-
-
-                </div>
-                <button class="btn btn-primary ms-4" type="submit">Submit</button>
-                <br>
-                </form>
             </div>
             <!-- CONTENT END -->
         </div>
