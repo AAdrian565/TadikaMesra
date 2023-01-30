@@ -74,7 +74,7 @@ if (!isset($_SESSION['username_siswa'])) {
                 ?>
             <div class="col-10 main-content">
                 <div class="mt-5 mx-3">
-                    <div class="h2">Mapel Siswa</div>
+                  <div class="h2">Mapel Siswa</div>
                     <hr class="border border-dark border-3 bg-dark">
                     <div class="d-flex flex-row justify-content-between mx-3">
                         <div class="h3">Kelas <?= $row['Nama_Kelas']?></div>
@@ -120,9 +120,17 @@ if (!isset($_SESSION['username_siswa'])) {
                     </div>
                         <?php }$i++;}while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) ?>
                     </div>
-                    </div>
+                  </div>
                 </div>
+            <form action="add_saran.php" method="POST">
+              <div class="input-group mb-3 ms-4 d-flex flex-column">
+                <label for="catatan_guru" class="form-label">Catatan untuk guru</label>
+                <textarea class="form-control w-100" id="catatan_guru" name="catatan_guru" rows="3"></textarea>
+              </div>
+              <button class="btn btn-primary ms-4" type="submit">Submit</button>
+            </form>
             </div>
+
         </div>
     </div>
 
