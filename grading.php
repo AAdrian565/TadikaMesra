@@ -31,24 +31,24 @@ if (!isset($_SESSION['username_guru'])) {
         <div class="row">
             <nav class="col-2 bg-secondary flex-column nav-side d-flex justify-content-between">
                 <div class="d-flex flex-column">
-                    <a href="./daftarmurid.php" class="dasbor nav-side-item  mt-5 ms-3" style="display: block;">
+                    <a href="./daftarmurid.php#" class="dasbor nav-side-item  mt-5 ms-3" style="display: block;">
                         <img src="images/list.png" alt="" width="30px" , height="30px">
                         List Siswa
                     </a>
-                    <a href="./Transaksig.php" class="transaksi nav-side-item  mt-2 ms-3" style="display: block;">
+                    <a href="./Transaksig.php#" class="transaksi nav-side-item  mt-2 ms-3" style="display: block;">
                         <img src="images/transaction.png" alt="" width="30px" height="30px">
-                        Transaction
+                        Buku Penghubung
                     </a>
                     <a href="./FormTransaksi.php#" class="mapel nav-side-item  mt-2 ms-3" style="display: block;">
                         <img src="images/newTransaction.png" alt="" width="30px" maxheight="30px">
-                        Add Transaction
+                        Tambah Buku Penghubung
                     </a>
                     <a href="./grading.php#" class="mapel nav-side-item  mt-2 ms-3" style="display: block;">
                         <img src="https://cdn-icons-png.flaticon.com/512/2228/2228722.png" alt="" width="30px" maxheight="30px">
                         Grading
                     </a>
                 </div>
-                <a href="./logout.php" class=" nav-side-item mt-2 ms-3 mb-5 pb-5" style="display: block;">
+                <a href="./logout.php#" class=" nav-side-item mt-2 ms-3 mb-5 pb-5" style="display: block;">
                     <img src="images/logout.png" alt="" width="30px" height="30px">
                     Logout
                 </a>

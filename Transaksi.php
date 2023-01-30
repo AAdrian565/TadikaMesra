@@ -31,20 +31,20 @@ if (!isset($_SESSION['username_siswa'])) {
         <div class="row">
             <nav class="col-2 bg-secondary flex-column nav-side d-flex justify-content-between">
                 <div class="d-flex flex-column">
-                    <a href="./dasbor.php" class="dasbor nav-side-item  mt-5 ms-3" style="display: block;">
+                    <a href="./dasbor.php#" class="dasbor nav-side-item  mt-5 ms-3" style="display: block;">
                         <img src="images/dasbor.png" alt="" width="30px" , height="30px">
                         Dasbor
                     </a>
-                    <a href="./Mapel.php" class="mapel nav-side-item  mt-2 ms-3" style="display: block;">
+                    <a href="./Mapel.php#" class="mapel nav-side-item  mt-2 ms-3" style="display: block;">
                         <img src="images/courses.png" alt="" width="30px" height="30px">
                         Courses
                     </a>
-                    <a href="./Transaksi.php" class="transaksi nav-side-item  mt-2 ms-3" style="display: block;">
+                    <a href="./Transaksi.php#" class="transaksi nav-side-item  mt-2 ms-3" style="display: block;">
                         <img src="images/transaction.png" alt="" width="30px" height="30px">
-                        Transaction
+                        Buku Penghubung
                     </a>
                 </div>
-                <a href="./logout.php" class=" nav-side-item mt-2 ms-3 mb-5 pb-5" style="display: block;">
+                <a href="./logout.php#" class=" nav-side-item mt-2 ms-3 mb-5 pb-5" style="display: block;">
                     <img src="images/logout.png" alt="" width="30px" height="30px">
                     Logout
                 </a>
