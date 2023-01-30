@@ -48,7 +48,7 @@ if (!isset($_SESSION['username_guru'])) {
                         Grading
                     </a>
                 </div>
-                <a href="./logout.php" class=" nav-side-item mt-2 ms-3 mb-5 pb-5" style="display: block;">
+                <a href="./logout.php#" class=" nav-side-item mt-2 ms-3 mb-5 pb-5" style="display: block;">
                     <img src="images/logout.png" alt="" width="30px" height="30px">
                     Logout
                 </a>
